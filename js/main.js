@@ -169,6 +169,7 @@ function gotDescription1(desc) {
   pc1.setLocalDescription(desc)
       .then(() => {
         if (!supportsSetCodecPreferences) {
+		  console.log(" fore chosen audio codec calling now...");
           desc.sdp = forceChosenAudioCodec(desc.sdp);
         }
         pc2.setRemoteDescription(desc).then(() => {
@@ -242,6 +243,7 @@ function onSetSessionDescriptionError(error) {
 }
 
 function forceChosenAudioCodec(sdp) {
+	console.log(" calling maybe prefer codec ...");
   return maybePreferCodec(sdp, 'audio', 'send', codecSelector.value);
 }
 
@@ -268,7 +270,7 @@ function maybePreferCodec(sdp, type, dir, codec) {
 
   // If the codec is available, set it as the default in m line.
   const codecIndex = findLine(sdpLines, 'a=rtpmap', codec);
-  console.log('codecIndex', codecIndex);
+  console.log("codecIndex" + codecIndex);
   if (codecIndex) {
     const payload = getCodecPayloadType(sdpLines[codecIndex]);
     if (payload) {

@@ -117,20 +117,20 @@ function gotStream(stream) {
   pc1.createOffer(offerOptions)
       .then(gotDescription1, onCreateSessionDescriptionError);
 
-  bitrateSeries = new TimelineDataSeries();
-  bitrateGraph = new TimelineGraphView('bitrateGraph', 'bitrateCanvas');
-  bitrateGraph.updateEndDate();
+ // bitrateSeries = new TimelineDataSeries();
+ // bitrateGraph = new TimelineGraphView('bitrateGraph', 'bitrateCanvas');
+ // bitrateGraph.updateEndDate();
 
-  headerrateSeries = new TimelineDataSeries();
-  headerrateSeries.setColor('green');
+  //headerrateSeries = new TimelineDataSeries();
+  //headerrateSeries.setColor('green');
 
-  packetSeries = new TimelineDataSeries();
-  packetGraph = new TimelineGraphView('packetGraph', 'packetCanvas');
-  packetGraph.updateEndDate();
+  //packetSeries = new TimelineDataSeries();
+  //packetGraph = new TimelineGraphView('packetGraph', 'packetCanvas');
+ // packetGraph.updateEndDate();
 
-  audioLevelSeries = new TimelineDataSeries();
-  audioLevelGraph = new TimelineGraphView('audioLevelGraph', 'audioLevelCanvas');
-  audioLevelGraph.updateEndDate();
+  //audioLevelSeries = new TimelineDataSeries();
+  //audioLevelGraph = new TimelineGraphView('audioLevelGraph', 'audioLevelCanvas');
+  //audioLevelGraph.updateEndDate();
 }
 
 function onCreateSessionDescriptionError(error) {

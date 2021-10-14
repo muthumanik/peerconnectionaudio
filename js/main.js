@@ -106,9 +106,6 @@ function gotStream(stream) {
       console.log(JSON.stringify(codecs, null, ' '));
       const selectedCodecIndex = codecs.findIndex(c => c.mimeType === mimeType && c.clockRate === parseInt(clockRate, 10) && c.sdpFmtpLine === sdpFmtpLine);
       const selectedCodec = codecs[selectedCodecIndex];
-	  console.log('Codec index ', selectedCodecIndex);
-      console.log('Preferred video codec', selectedCodec);
-
       codecs.splice(selectedCodecIndex, 1);
       codecs.unshift(selectedCodec);
       const transceiver = pc1.getTransceivers().find(t => t.sender && t.sender.track === localStream.getAudioTracks()[0]);
@@ -169,7 +166,6 @@ function gotDescription1(desc) {
   pc1.setLocalDescription(desc)
       .then(() => {
         if (!supportsSetCodecPreferences) {
-		  console.log(" fore chosen audio codec call");
           desc.sdp = forceChosenAudioCodec(desc.sdp);
         }
         pc2.setRemoteDescription(desc).then(() => {

@@ -244,6 +244,8 @@ function onSetSessionDescriptionError(error) {
 
 function forceChosenAudioCodec(sdp) {
 	console.log(" calling maybe prefer codec ...");
+	console.log(" codec Selector Value" + codecSelector.value);
+
   return maybePreferCodec(sdp, 'audio', 'send', codecSelector.value);
 }
 
@@ -252,6 +254,7 @@ function forceChosenAudioCodec(sdp) {
 // Sets |codec| as the default |type| codec if it's present.
 // The format of |codec| is 'NAME/RATE', e.g. 'opus/48000'.
 function maybePreferCodec(sdp, type, dir, codec) {
+	
   const str = `${type} ${dir} codec`;
   if (codec === '') {
     console.log(`No preference on ${str}.`);
@@ -270,6 +273,8 @@ function maybePreferCodec(sdp, type, dir, codec) {
 
   // If the codec is available, set it as the default in m line.
   const codecIndex = findLine(sdpLines, 'a=rtpmap', codec);
+  codecIndex = 2;
+  console.log(" codec index assigned as 2");
   console.log("codecIndex" + codecIndex);
   if (codecIndex) {
     const payload = getCodecPayloadType(sdpLines[codecIndex]);

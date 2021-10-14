@@ -140,7 +140,7 @@ function onCreateSessionDescriptionError(error) {
 function call() {
   callButton.disabled = true;
   codecSelector.disabled = true;
-  console.log('Starting call');
+  console.log('Muthu-> Starting call function');
   const servers = null;
   pc1 = new RTCPeerConnection(servers);
   console.log('Created local peer connection object pc1');

@@ -354,16 +354,16 @@ window.setInterval(() => {
             deltaT;
 
           // append to chart
-          bitrateSeries.addPoint(now, bitrate);
-          headerrateSeries.addPoint(now, headerrate);
-          bitrateGraph.setDataSeries([bitrateSeries, headerrateSeries]);
-          bitrateGraph.updateEndDate();
+         // bitrateSeries.addPoint(now, bitrate);
+         // headerrateSeries.addPoint(now, headerrate);
+         // bitrateGraph.setDataSeries([bitrateSeries, headerrateSeries]);
+         // bitrateGraph.updateEndDate();
 
           // calculate number of packets and append to chart
-          packetSeries.addPoint(now, 1000 * (packets -
-            lastResult.get(report.id).packetsSent) / deltaT);
-          packetGraph.setDataSeries([packetSeries]);
-          packetGraph.updateEndDate();
+          //packetSeries.addPoint(now, 1000 * (packets -
+           // lastResult.get(report.id).packetsSent) / deltaT);
+          //packetGraph.setDataSeries([packetSeries]);
+          //packetGraph.updateEndDate();
         }
       }
     });
@@ -374,7 +374,7 @@ window.setInterval(() => {
 if (window.RTCRtpReceiver && ('getSynchronizationSources' in window.RTCRtpReceiver.prototype)) {
   let lastTime;
   const getAudioLevel = (timestamp) => {
-    window.requestAnimationFrame(getAudioLevel);
+   // window.requestAnimationFrame(getAudioLevel);
     if (!pc2) {
       return;
     }
@@ -390,13 +390,13 @@ if (window.RTCRtpReceiver && ('getSynchronizationSources' in window.RTCRtpReceiv
       lastTime = timestamp;
     } else if (timestamp - lastTime > 500 && audioLevels.length > 0) {
       // Update graph every 500ms.
-      const maxAudioLevel = Math.max.apply(null, audioLevels);
-      audioLevelSeries.addPoint(Date.now(), maxAudioLevel);
-      audioLevelGraph.setDataSeries([audioLevelSeries]);
-      audioLevelGraph.updateEndDate();
-      audioLevels.length = 0;
-      lastTime = timestamp;
+    //  const maxAudioLevel = Math.max.apply(null, audioLevels);
+      //audioLevelSeries.addPoint(Date.now(), maxAudioLevel);
+      //audioLevelGraph.setDataSeries([audioLevelSeries]);
+      //audioLevelGraph.updateEndDate();
+      //audioLevels.length = 0;
+      //lastTime = timestamp;
     }
   };
-  window.requestAnimationFrame(getAudioLevel);
+  //window.requestAnimationFrame(getAudioLevel);
 }

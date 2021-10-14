@@ -14,7 +14,7 @@ const callButton = document.querySelector('button#callButton');
 const hangupButton = document.querySelector('button#hangupButton');
 const codecSelector = document.querySelector('select#codec');
 hangupButton.disabled = true;
-callButton.onclick = call;
+//callButton.onclick = call;
 hangupButton.onclick = hangup;
 
 let pc1;

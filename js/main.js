@@ -169,7 +169,7 @@ function gotDescription1(desc) {
   pc1.setLocalDescription(desc)
       .then(() => {
         if (!supportsSetCodecPreferences) {
-		  console.log(" fore chosen audio codec calling now...");
+		  console.log(" fore chosen audio codec call");
           desc.sdp = forceChosenAudioCodec(desc.sdp);
         }
         pc2.setRemoteDescription(desc).then(() => {
@@ -243,9 +243,6 @@ function onSetSessionDescriptionError(error) {
 }
 
 function forceChosenAudioCodec(sdp) {
-	console.log(' calling maybe prefer codec ...');
-	console.log(" codec Selector Value" + codecSelector.value);
-
   return maybePreferCodec(sdp, 'audio', 'send', codecSelector.value);
 }
 
@@ -254,7 +251,6 @@ function forceChosenAudioCodec(sdp) {
 // Sets |codec| as the default |type| codec if it's present.
 // The format of |codec| is 'NAME/RATE', e.g. 'opus/48000'.
 function maybePreferCodec(sdp, type, dir, codec) {
-	
   const str = `${type} ${dir} codec`;
   if (codec === '') {
     console.log(`No preference on ${str}.`);
@@ -273,19 +269,11 @@ function maybePreferCodec(sdp, type, dir, codec) {
 
   // If the codec is available, set it as the default in m line.
   const codecIndex = findLine(sdpLines, 'a=rtpmap', codec);
-  codecIndex = 2;
-    console.log('codec index assigned as 2');
-
-  console.log(" codec index assigned as 2");
-  console.log("codecIndex" + codecIndex);
+  console.log('codecIndex', codecIndex);
   if (codecIndex) {
     const payload = getCodecPayloadType(sdpLines[codecIndex]);
     if (payload) {
-		console.log('muthu-> start calling set default codec');
-     // sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);
-	 console.log(' muthu-> check mlineindexvalue here');
-     sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);
-
+      sdpLines[mLineIndex] = setDefaultCodec(sdpLines[mLineIndex], payload);
     }
   }
 
@@ -323,8 +311,6 @@ function getCodecPayloadType(sdpLine) {
 
 // Returns a new m= line with the specified codec as the first one.
 function setDefaultCodec(mLine, payload) {
-	console.log('Muthu->setDefaultCodec called ')
-	
   const elements = mLine.split(' ');
 
   // Just copy the first three parameters; codec order starts on fourth.

@@ -13,6 +13,15 @@ const audio2 = document.querySelector('audio#audio2');
 const callButton = document.querySelector('button#callButton');
 const hangupButton = document.querySelector('button#hangupButton');
 const codecSelector = document.querySelector('select#codec');
+
+audio2.addEventListener('volumechange', (event) => {
+  console.log('The volume changed on addEventListener.');
+});
+
+audio2.onvolumechange = (event) => {
+  console.log(' onvolumechange The volume changed.');
+};
+
 hangupButton.disabled = true;
 //callButton.onclick = call;
 hangupButton.onclick = hangup;
@@ -85,6 +94,7 @@ async function setPtime(ptime) {
   }
   await pc1.setRemoteDescription(desc);
 }
+
 
 function gotStream(stream) {
   hangupButton.disabled = false;
@@ -208,6 +218,7 @@ function gotRemoteStream(e) {
     console.log('Received remote stream');
   }
 }
+
 
 function getOtherPc(pc) {
   return (pc === pc1) ? pc2 : pc1;

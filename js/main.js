@@ -15,14 +15,16 @@ const hangupButton = document.querySelector('button#hangupButton');
 const codecSelector = document.querySelector('select#codec');
 const video1 = document.querySelector('video#video1');
 
-audio2.addEventListener('volumechange', (event) => {
+/*audio2.addEventListener('volumechange', (event) => {
   console.log('The volume changed on addEventListener.');
   video1.volume=0.0;
   console.log(' volume set to 0.0 ');
 });
-
+*/
 audio2.onvolumechange = (event) => {
-  //console.log(' onvolumechange The volume changed.');
+ console.log(' onvolumechange raised...!');
+ video1.volume=0.0;
+ console.log(' volume set to 0.0 ');
 };
 
 hangupButton.disabled = true;

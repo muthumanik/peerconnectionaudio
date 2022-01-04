@@ -22,15 +22,15 @@ const video1 = document.querySelector('video#video1');
 });
 */
 audio2.onvolumechange = (event) => {
- console.log(' onvolumechange raised...!');
+ console.log(' onvolumechange raised...! and added muted checking');
  console.log(audio2.volume);
- if(audio2.volume){
-   video1.volume=0.0;
-   console.log(' volume set to 0.0 ');
+ if(audio2.muted){
+   video1.volume=1.0;
+   console.log(' volume set to 1.0 ');
    }
 else{
-video1.volume=1.0;
-   console.log(' volume set to 1.0 ');  
+video1.volume=0.0;
+   console.log(' volume set to 0.0 ');  
    }	
 
 };

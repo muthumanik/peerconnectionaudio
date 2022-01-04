@@ -24,15 +24,13 @@ const video1 = document.querySelector('video#video1');
 audio2.onvolumechange = (event) => {
  console.log(' onvolumechange raised...!');
  console.log(audio2.volume);
- if(mySignal){
+ if(audio2.volume){
    video1.volume=0.0;
    console.log(' volume set to 0.0 ');
-   mySignal = false;
    }
 else{
 video1.volume=1.0;
-   console.log(' volume set to 1.0 ');
-   mySignal = true;
+   console.log(' volume set to 1.0 ');  
    }	
 
 };

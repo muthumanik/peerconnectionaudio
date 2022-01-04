@@ -14,7 +14,7 @@ const callButton = document.querySelector('button#callButton');
 const hangupButton = document.querySelector('button#hangupButton');
 const codecSelector = document.querySelector('select#codec');
 const video1 = document.querySelector('video#video1');
-let mySignal = false;
+
 /*audio2.addEventListener('volumechange', (event) => {
   console.log('The volume changed on addEventListener.');
   video1.volume=0.0;
@@ -23,6 +23,7 @@ let mySignal = false;
 */
 audio2.onvolumechange = (event) => {
  console.log(' onvolumechange raised...!');
+ console.log(audio2.volume);
  if(mySignal){
    video1.volume=0.0;
    console.log(' volume set to 0.0 ');

@@ -28,12 +28,12 @@ audio2.onvolumechange = (event) => {
  console.log(' mute status');
  console.log(audio2.muted);
  if(audio2.muted){
-   video1.volume=0.0;
-   console.log(' volume set to 0.0 ');
+   video1.volume=1.0;
+   console.log(' video volume set to 1.0 ');
    }
 else{
-video1.volume=1.0;
-   console.log(' volume set to 1.0 ');  
+video1.volume=0.0;
+   console.log(' video volume set to 0.0 ');  
    }	
 
 };
